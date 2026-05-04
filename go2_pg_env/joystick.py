@@ -550,17 +550,24 @@ class Joystick(go2_base.Go2Env):
         return self._cmd_min, self._cmd_max, self._cmd_b
 
     def _student_stage2_sampling_profile(self, current_command: jax.Array) -> tuple[jax.Array, jax.Array, jax.Array]:
-    """Stage 2 omnidirectional command sampling.
+        """Homework seam for stage_2 command sampling.
 
-    Uses self._student_stage2_goal_* ranges to enable full omnidirectional
-    motion: forward, backward, lateral (vy), and yaw rotation.
-    """
-    del current_command
-    return (
-        self._student_stage2_goal_min,
-        self._student_stage2_goal_max,
-        self._student_stage2_goal_b,
-)
+        TODO(student): keep stage_1 as the fixed forward-only baseline, and use
+        stage_2 to expand the command distribution beyond `{stand, +vx}`.
+
+        The current baseline intentionally returns the same forward-only profile
+        as stage_1, so the public benchmark still exposes missing lateral / yaw
+        capability. A good stage_2 implementation should eventually use the
+        stored `self._student_stage2_goal_*` values below.
+
+        Suggested approach:
+        1. keep the baseline forward-only ranges as the starting point
+        2. widen the stage_2 sampling range toward `self._student_stage2_goal_*`
+        3. increase the probability of non-zero `vy` and `yaw_rate` commands
+        """
+        del current_command
+        return self._cmd_min, self._cmd_max, self._cmd_b
+
     def sample_command(self, rng: jax.Array, current_command: jax.Array) -> jax.Array:
         rng, y_rng, w_rng, z_rng = jax.random.split(rng, 4)
         cmd_min, cmd_max, cmd_keep_prob = self._command_sampling_profile(current_command)
