@@ -550,17 +550,17 @@ class Joystick(go2_base.Go2Env):
         return self._cmd_min, self._cmd_max, self._cmd_b
 
     def _student_stage2_sampling_profile(self, current_command: jax.Array) -> tuple[jax.Array, jax.Array, jax.Array]:
-        """Stage 2 omnidirectional command sampling.
+    """Stage 2 omnidirectional command sampling.
 
-        Uses self._student_stage2_goal_* ranges to enable full
-        omnidirectional motion: vx, vy, and yaw_rate.
-        """
-        del current_command
-        return (
-            self._student_stage2_goal_min,
-            self._student_stage2_goal_max,
-            self._student_stage2_goal_b,
-        )
+    Uses self._student_stage2_goal_* ranges to enable full omnidirectional
+    motion: forward, backward, lateral (vy), and yaw rotation.
+    """
+    del current_command
+    return (
+        self._student_stage2_goal_min,
+        self._student_stage2_goal_max,
+        self._student_stage2_goal_b,
+)
     def sample_command(self, rng: jax.Array, current_command: jax.Array) -> jax.Array:
         rng, y_rng, w_rng, z_rng = jax.random.split(rng, 4)
         cmd_min, cmd_max, cmd_keep_prob = self._command_sampling_profile(current_command)
