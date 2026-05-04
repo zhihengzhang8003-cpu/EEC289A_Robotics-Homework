@@ -239,7 +239,7 @@ class Joystick(go2_base.Go2Env):
         )
 
         rng, key1, key2 = jax.random.split(rng, 3)
-        time_until_next_cmd = jax.random.exponential(key1) * 5.0
+        time_until_next_cmd = jp.minimum(jax.random.exponential(key1) * 5.0, 10.0)
         steps_until_next_cmd = jp.round(time_until_next_cmd / self.dt).astype(jp.int32)
         command = jax.random.uniform(key2, shape=(3,), minval=self._cmd_min, maxval=self._cmd_max)
 
