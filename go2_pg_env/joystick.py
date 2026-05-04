@@ -90,10 +90,9 @@ def default_config() -> config_dict.ConfigDict:
             max_foot_height=0.1,
         ),
         pert_config=config_dict.create(
-            enable=False,
-            velocity_kick=[0.0, 3.0],
+            enable=True,
+            velocity_kick=[0.0, 1.5],
             kick_durations=[0.05, 0.2],
-            kick_wait_times=[1.0, 3.0],
         ),
         command_config=config_dict.create(
             # Command sampling ranges for [vx, vy, yaw_rate]
