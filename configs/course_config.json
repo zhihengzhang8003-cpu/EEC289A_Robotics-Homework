@@ -103,7 +103,13 @@
         },
         "reward_scales": {
             "action_rate": -0.03,
-            "energy": -0.002
+            "energy": -0.002,
+            "feet_slip": -0.04,
+            "feet_clearance": -3.0,
+            "feet_height": -0.4,
+            "feet_air_time": 1.0,
+            "tracking_lin_vel": 2.5,
+            "orientation": -8.0
         },
         "restore_previous_stage_checkpoint": true
     },
