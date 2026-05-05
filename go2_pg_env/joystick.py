@@ -70,7 +70,7 @@ def default_config() -> config_dict.ConfigDict:
                 tracking_ang_vel=1,
                 # Stability terms
                 lin_vel_z=-0.5,
-                ang_vel_xy=-0.06,
+                ang_vel_xy=-0.05,
                 orientation=-5.0,
                 dof_pos_limits=-1.0,
                 pose=0.1,
@@ -86,7 +86,7 @@ def default_config() -> config_dict.ConfigDict:
                 feet_slip=-0.1,
                 feet_air_time=0.5,
             ),
-            tracking_sigma=0.5,
+            tracking_sigma=0.25,
             max_foot_height=0.1,
         ),
         pert_config=config_dict.create(
