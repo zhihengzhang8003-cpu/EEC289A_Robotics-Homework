@@ -67,7 +67,7 @@ def default_config() -> config_dict.ConfigDict:
             scales=config_dict.create(
                 # Task terms
                 tracking_lin_vel=2.0,
-                tracking_ang_vel=0.5,
+                tracking_ang_vel=1,
                 # Stability terms
                 lin_vel_z=-0.5,
                 ang_vel_xy=-0.05,
