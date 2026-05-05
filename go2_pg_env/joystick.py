@@ -70,8 +70,8 @@ def default_config() -> config_dict.ConfigDict:
                 tracking_ang_vel=1,
                 # Stability terms
                 lin_vel_z=-0.5,
-                ang_vel_xy=-0.15,
-                orientation=-1.0,
+                ang_vel_xy=-0.06,
+                orientation=-5.0,
                 dof_pos_limits=-1.0,
                 pose=0.1,
                 termination=-1.0,
